@@ -1,0 +1,7 @@
+{
+  "name": "Dramantram Academy",
+  "description": "The educational branch of Dramantram creative agency, offering high-end cinematic courses in filmmaking, graphic design, and digital marketing.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
