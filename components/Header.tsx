@@ -7,7 +7,7 @@ const Header: React.FC = () => {
         <div className="flex items-center gap-3">
           {/* <img className="w-10 md:w-12 h-auto logo-mask" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
           <img
-            src="Dramantram Logo.png"
+            src="dramantram-logo.png"
             className="w-auto h-10 logo-mask"
             alt=""
             viewBox="0 0 100 50"

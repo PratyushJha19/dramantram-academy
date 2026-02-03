@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-2 mb-8">
             <div className="w-20 h-20 bg-[#FF0000] rounded-sm transform flex items-center justify-center">
               {/* <span className="text-white font-black oswald -rotate-45">D</span> */}
-              <img src="Dramantram Logo.png" alt="" />
+              <img src="dramantram-logo.png" alt="" />
             </div>
             <span className="oswald text-3xl font-black tracking-tighter uppercase">
               Dramantram
