@@ -1,38 +1,37 @@
-
-import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import ProgramBar from './components/ProgramBar';
-import About from './components/About';
-import ValueProp from './components/ValueProp';
-import Courses from './components/Courses';
-import Mentors from './components/Mentors';
-import GeminiAdvisor from './components/GeminiAdvisor';
-import Portfolio from './components/Portfolio';
-import AlumniSpeak from './components/AlumniSpeak';
-import Community from './components/Community';
-import FinalCTA from './components/FinalCTA';
-import Footer from './components/Footer';
+import React from "react";
+import { BrowserRouter as HashRouter, Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import AboutPage from "./pages/AboutPage";
+import CoursesPage from "./pages/CoursesPage";
+import MentorsPage from "./pages/MentorsPage";
+import BootcampPage from "./pages/BootcampPage";
+import VisualCommunicationPage from "./pages/courses/VisualCommunicationPage";
+import UiUxPage from "./pages/courses/UiUxPage";
+import AnimationVfxPage from "./pages/courses/AnimationVfxPage";
+import VideoEditingPage from "./pages/courses/VideoEditingPage";
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#FF0000] selection:text-white">
-      <Header />
-      <main>
-        <Hero />
-        <ProgramBar />
-        <About />
-        <ValueProp />
-        <Courses />
-        <Mentors />
-        <GeminiAdvisor />
-        <Portfolio />
-        <AlumniSpeak />
-        <Community />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="courses" element={<CoursesPage />} />
+          <Route
+            path="courses/visual-communication"
+            element={<VisualCommunicationPage />}
+          />
+          <Route path="courses/ui-ux-design" element={<UiUxPage />} />
+          <Route path="courses/animation-vfx" element={<AnimationVfxPage />} />
+          <Route path="courses/video-editing" element={<VideoEditingPage />} />
+          <Route path="mentors" element={<MentorsPage />} />
+          <Route path="bootcamp" element={<BootcampPage />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   );
 };
 

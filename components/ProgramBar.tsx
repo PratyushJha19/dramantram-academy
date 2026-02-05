@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Clock, MapPin, Laptop, Calendar } from 'lucide-react';
 
@@ -11,7 +10,7 @@ const ProgramBar: React.FC = () => {
   ];
 
   return (
-    <div className="relative -mt-10 md:-mt-16 z-20 px-4 md:px-6">
+    <div className="relative z-20 px-4 md:px-6 reveal">
       {/* Added subtle red gradient background */}
       <div className="absolute inset-0 bg-red-radial opacity-20 -z-10 blur-3xl"></div>
       

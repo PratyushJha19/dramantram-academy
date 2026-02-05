@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
 
@@ -13,7 +12,7 @@ const WORK = [
 
 const Portfolio: React.FC = () => {
   return (
-    <section id="portfolio" className="px-4 md:px-6 bg-red-radial">
+    <section id="portfolio" className="px-4 md:px-6 bg-red-radial reveal">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="text-center md:text-left">
@@ -25,19 +24,19 @@ const Portfolio: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {WORK.map((item) => (
-            <div key={item.id} className="group relative overflow-hidden aspect-video cursor-pointer rounded-2xl gloss-card border-none">
+            <div key={item.id} className="group relative overflow-hidden aspect-video cursor-pointer rounded-2xl gloss-card border-none hover:shadow-[0_0_40px_rgba(255,0,0,0.3)] transition-all duration-500">
               <img 
                 src={item.img} 
                 alt={item.title} 
                 className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#FF0000]/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                <span className="text-[#FFD700] text-xs font-black tracking-widest uppercase mb-2">{item.category}</span>
-                <h4 className="oswald text-white text-3xl font-black uppercase leading-none mb-4">{item.title}</h4>
-                <div className="w-12 h-1 bg-white mb-6 group-hover:w-full transition-all duration-500"></div>
-                <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity delay-200">
+                <span className="text-[#FFD700] text-xs font-black tracking-widest uppercase mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">{item.category}</span>
+                <h4 className="oswald text-white text-3xl font-black uppercase leading-none mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">{item.title}</h4>
+                <div className="w-12 h-1 bg-white mb-6 group-hover:w-full transition-all duration-700"></div>
+                <div className="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all delay-200">
                   Explore Project <ExternalLink size={14} />
                 </div>
               </div>

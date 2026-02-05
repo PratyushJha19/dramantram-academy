@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { MessageSquare } from 'lucide-react';
 
 const Community: React.FC = () => {
   return (
-    <section className="py-24 bg-black relative">
+    <section className="py-24 bg-black relative reveal">
       <div className="absolute inset-0 bg-glow-tr opacity-25"></div>
       <div className="absolute inset-0 bg-red-radial opacity-15"></div>
       

@@ -1,17 +1,25 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 const Header: React.FC = () => {
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Bootcamp", path: "/bootcamp" },
+    { label: "About Us", path: "/about" },
+    { label: "Courses", path: "/courses" },
+    { label: "Mentors", path: "/mentors" },
+  ];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {/* <img className="w-10 md:w-12 h-auto logo-mask" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
+        <Link to="/" className="flex items-center gap-3">
           <img
-            src="dramantram-logo.png"
-            className="w-auto h-10 logo-mask"
-            alt=""
+            src="/dramantram-logo.png"
+            className="w-12 h-auto logo-mask"
             viewBox="0 0 100 50"
             fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           />
           <div className="hidden sm:block">
             <span className="oswald text-lg md:text-xl font-black tracking-tighter uppercase block leading-none">
@@ -21,37 +29,31 @@ const Header: React.FC = () => {
               Academy
             </span>
           </div>
-        </div>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-widest uppercase">
-          <a
-            href="#"
-            className="text-white hover:text-[#FFD700] transition-colors relative group"
-          >
-            Home
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FFD700] transition-all group-hover:w-full"></span>
-          </a>
-          <a
-            href="#about"
-            className="text-white hover:text-[#FFD700] transition-colors relative group"
-          >
-            About Us
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FFD700] transition-all group-hover:w-full"></span>
-          </a>
-          <a
-            href="#courses"
-            className="text-white hover:text-[#FFD700] transition-colors relative group"
-          >
-            Courses
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FFD700] transition-all group-hover:w-full"></span>
-          </a>
-          <a
-            href="#portfolio"
-            className="text-white hover:text-[#FFD700] transition-colors relative group"
-          >
-            Portfolio
-            <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FFD700] transition-all group-hover:w-full"></span>
-          </a>
+          {navItems.map((item) => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) => `
+                transition-colors relative group
+                ${isActive ? "text-[#FFD700]" : "text-white hover:text-[#FFD700]"}
+              `}
+            >
+              {/* Fix: NavLink children as a function to access isActive state for all internal elements */}
+              {({ isActive }) => (
+                <>
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FFD700] transition-all group-hover:w-full"></span>
+                  {/* Permanent underline for active state */}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-[#FFD700]"></span>
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
         </nav>
 
         <div className="flex items-center gap-4">

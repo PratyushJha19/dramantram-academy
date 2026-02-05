@@ -1,9 +1,8 @@
-
 import React from 'react';
 
 const ValueProp: React.FC = () => {
   return (
-    <section className="px-4 md:px-6 relative overflow-hidden">
+    <section className="px-4 md:px-6 relative overflow-hidden reveal">
       <div className="absolute inset-0 bg-red-radial opacity-50"></div>
       <div className="absolute top-1/2 left-0 w-[40%] h-[40%] bg-glow-tr-yellow opacity-10"></div>
       
@@ -15,7 +14,7 @@ const ValueProp: React.FC = () => {
                The Problem & <br /> <span className="text-gradient-red">Our Solution</span>
              </h2>
              <div className="space-y-6 max-w-lg mx-auto lg:mx-0">
-               <div className="p-6 md:p-8 gloss-card rounded-2xl border-l-4 border-l-[#FFD700] text-left">
+               <div className="p-6 md:p-8 gloss-card rounded-2xl border-l-4 border-l-[#FFD700] text-left hover:border-l-[#FF0000] transition-all duration-500">
                  <h4 className="font-bold text-lg mb-2 text-white uppercase tracking-widest">The <span className="text-[#FFD700]">Value</span> You Get:</h4>
                  <p className="text-gray-400 text-sm md:text-base leading-relaxed font-medium">
                    Our <span className="text-white">Micro MBA-like</span> crash course is built to help you bridge the gap so you can land better gigs, level up, and get paid for your worth.
@@ -27,12 +26,12 @@ const ValueProp: React.FC = () => {
              </div>
           </div>
 
-          <div className="relative flex justify-center lg:justify-end py-12 lg:py-0">
-            <div className="relative w-full max-w-md aspect-square bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/India_map_blank.svg/800px-India_map_blank.svg.png')] bg-contain bg-no-repeat bg-center opacity-20 grayscale invert">
+          <div className="relative flex justify-center lg:justify-end py-12 lg:py-0 group">
+            <div className="relative w-full max-w-md aspect-square bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/India_map_blank.svg/800px-India_map_blank.svg.png')] bg-contain bg-no-repeat bg-center opacity-20 grayscale invert group-hover:opacity-40 transition-opacity duration-700">
             </div>
             
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-auto lg:right-0 lg:translate-x-0 text-center lg:text-right">
-              <div className="text-7xl md:text-9xl font-black oswald leading-none text-[#FF0000]">60%</div>
+              <div className="text-7xl md:text-9xl font-black oswald leading-none text-[#FF0000] group-hover:scale-110 transition-transform duration-700">60%</div>
               <div className="text-xs md:text-sm font-bold text-gray-400 uppercase max-w-[220px] ml-auto">
                 of Indian creatives lacking professional training. <br />
                 <span className="text-[10px] text-[#FFD700]">— NSDC Report</span>
