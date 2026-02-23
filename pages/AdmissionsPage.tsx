@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Phone,
   Mail,
@@ -9,26 +10,226 @@ import {
   Linkedin,
   QrCode,
   ArrowRight,
+  User,
+  ChevronRight,
+  Loader2,
+  CheckCircle,
 } from "lucide-react";
 
 const AdmissionsPage: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [selectedCourse, setSelectedCourse] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  const courses = [
+    { id: "visual", label: "Visual Communication", icon: "🎨" },
+    { id: "uiux", label: "UI/UX Design", icon: "📱" },
+    { id: "vfx", label: "Animation & VFX", icon: "🎬" },
+    { id: "editing", label: "Video Editing", icon: "✂️" },
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedCourse) {
+      alert("Please select a course first!");
+      return;
+    }
+
+    setStatus("sending");
+
+    // Fetching credentials from .env
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Safety check for developer
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS credentials missing from .env file");
+      setStatus("error");
+      return;
+    }
+
+    try {
+      await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current!,
+        publicKey,
+      );
+
+      setStatus("success");
+      formRef.current?.reset();
+      setSelectedCourse("");
+    } catch (error) {
+      console.error("Failed to send:", error);
+      setStatus("error");
+    }
+  };
+
   return (
-    <div className="pt-20 bg-black min-h-screen">
+    <div className="pt-20 bg-black min-h-screen text-white">
+      {/* Hero Section */}
       <div className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-red-radial opacity-40"></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-block px-4 py-1.5 bg-[#FF0000]/10 border border-[#FF0000]/30 rounded-full mb-8 animate-fade-in-up">
+          <div className="inline-block px-4 py-1.5 bg-[#FF0000]/10 border border-[#FF0000]/30 rounded-full mb-8">
             <span className="text-[10px] font-black text-[#FF0000] uppercase tracking-[0.4em]">
               Admissions 2026
             </span>
           </div>
-          <h1 className="oswald text-6xl md:text-9xl font-black uppercase tracking-tighter mb-8 animate-fade-in-up animation-delay-200">
+          <h1 className="oswald text-6xl md:text-9xl font-black uppercase tracking-tighter mb-8">
             Apply <span className="text-[#FFD700]">Today.</span>
           </h1>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-medium leading-relaxed animate-fade-in-up animation-delay-400">
-            Secure your slot for the upcoming batch. Limited seats available for
-            dedicated creative aspirers in Lucknow.
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-medium">
+            Secure your slot for the upcoming batch in Lucknow.
           </p>
+        </div>
+      </div>
+
+      {/* --- FORM SECTION --- */}
+      <div className="max-w-4xl mx-auto px-6 mb-32">
+        <div className="gloss-card p-8 md:p-12 rounded-[2.5rem] border-red-500/20 relative overflow-hidden">
+          {status === "success" ? (
+            <div className="text-center py-20 animate-in fade-in zoom-in duration-500">
+              <CheckCircle className="text-green-500 mx-auto mb-6" size={80} />
+              <h2 className="oswald text-4xl font-black uppercase mb-2">
+                Application <span className="text-[#FFD700]">Sent!</span>
+              </h2>
+              <p className="text-gray-400 mb-8">
+                We have received your details. Our mentors will call you
+                shortly.
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="text-red-500 font-bold uppercase tracking-widest text-xs hover:underline"
+              >
+                Send another response
+              </button>
+            </div>
+          ) : (
+            <>
+              <h2 className="oswald text-4xl font-black uppercase mb-2">
+                Registration <span className="text-[#FF0000]">Form</span>
+              </h2>
+              <p className="text-gray-500 mb-10 font-medium">
+                Provide your details and select your specialization.
+              </p>
+
+              <form ref={formRef} className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
+                      Full Name
+                    </label>
+                    <div className="relative">
+                      <User
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                        size={18}
+                      />
+                      <input
+                        name="user_name"
+                        required
+                        type="text"
+                        placeholder="John Doe"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
+                      Email Address
+                    </label>
+                    <div className="relative">
+                      <Mail
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                        size={18}
+                      />
+                      <input
+                        name="user_email"
+                        required
+                        type="email"
+                        placeholder="john@example.com"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 md:col-span-2">
+                    <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
+                      Phone Number
+                    </label>
+                    <div className="relative">
+                      <Phone
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                        size={18}
+                      />
+                      <input
+                        name="user_phone"
+                        required
+                        type="tel"
+                        placeholder="+91 00000 00000"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <input
+                    type="hidden"
+                    name="selected_course"
+                    value={selectedCourse}
+                  />
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">
+                    Select Your Course
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {courses.map((course) => (
+                      <button
+                        key={course.id}
+                        type="button"
+                        onClick={() => setSelectedCourse(course.label)}
+                        className={`flex items-center gap-4 p-4 rounded-xl border transition-all text-left ${
+                          selectedCourse === course.label
+                            ? "bg-[#FF0000]/20 border-[#FF0000] shadow-[0_0_15px_rgba(255,0,0,0.2)]"
+                            : "bg-white/5 border-white/10 hover:border-white/30"
+                        }`}
+                      >
+                        <span className="text-2xl">{course.icon}</span>
+                        <span
+                          className={`font-bold uppercase text-xs tracking-wider ${selectedCourse === course.label ? "text-white" : "text-gray-400"}`}
+                        >
+                          {course.label}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  disabled={status === "sending"}
+                  className="w-full py-5 bg-[#FF0000] text-white font-black uppercase tracking-[0.2em] rounded-xl hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all flex items-center justify-center gap-2 group disabled:opacity-50"
+                >
+                  {status === "sending" ? (
+                    <Loader2 className="animate-spin" />
+                  ) : (
+                    <>
+                      Submit Application{" "}
+                      <ChevronRight className="group-hover:translate-x-1 transition-transform" />
+                    </>
+                  )}
+                </button>
+                {status === "error" && (
+                  <p className="text-red-500 text-center text-xs font-bold">
+                    Something went wrong. Check console for details.
+                  </p>
+                )}
+              </form>
+            </>
+          )}
         </div>
       </div>
 

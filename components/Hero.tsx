@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up animation-delay-600">
             <a
-              href="#apply"
+              href="/admissions"
               className="w-full sm:w-auto px-12 py-5 bg-[#FF0000] text-white font-black uppercase tracking-widest rounded-xl hover:shadow-[0_0_40px_rgba(255,0,0,0.6)] transition-all flex items-center justify-center gap-3 group"
             >
               Apply Now{" "}

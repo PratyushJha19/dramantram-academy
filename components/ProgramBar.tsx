@@ -23,7 +23,7 @@ const ProgramBar: React.FC = () => {
     },
     {
       label: "Start Date",
-      value: "April 15, 2026",
+      value: "1st June, 2026",
       sub: "Limited Seats",
       icon: Calendar,
       highlight: true,
