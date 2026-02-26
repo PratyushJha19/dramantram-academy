@@ -41,7 +41,7 @@ const FinalCTA: React.FC = () => {
               Apply Now <ArrowRight size={20} />
             </a>
             <a
-              href="/admissions"
+              href="/enquiry"
               className="px-10 md:px-14 py-5 md:py-6 bg-white/5 border border-white/10 text-white font-black uppercase tracking-[0.2em] text-[12px] md:text-[13px] rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-3 group"
             >
               <Mail

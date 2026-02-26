@@ -81,7 +81,7 @@ const Courses: React.FC = () => {
   return (
     <section
       id="courses"
-      className="py-32 relative overflow-hidden bg-black reveal"
+      className="pb-32 relative overflow-hidden bg-black reveal"
     >
       <div className="absolute inset-0 bg-red-glow opacity-30"></div>
 

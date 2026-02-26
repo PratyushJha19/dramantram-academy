@@ -28,6 +28,7 @@ const AdmissionsPage: React.FC = () => {
     { id: "uiux", label: "UI/UX Design", icon: "📱" },
     { id: "vfx", label: "Animation & VFX", icon: "🎬" },
     { id: "editing", label: "Video Editing", icon: "✂️" },
+    { id: "bootcamp", label: "Bootcamp", icon: "🎓" },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -36,34 +37,19 @@ const AdmissionsPage: React.FC = () => {
       alert("Please select a course first!");
       return;
     }
-
     setStatus("sending");
-
-    // Fetching credentials from .env
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    // Safety check for developer
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS credentials missing from .env file");
-      setStatus("error");
-      return;
-    }
 
     try {
       await emailjs.sendForm(
-        serviceId,
-        templateId,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Use the new universal ID
         formRef.current!,
-        publicKey,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
-
       setStatus("success");
       formRef.current?.reset();
       setSelectedCourse("");
     } catch (error) {
-      console.error("Failed to send:", error);
       setStatus("error");
     }
   };
@@ -134,6 +120,11 @@ const AdmissionsPage: React.FC = () => {
                         type="text"
                         placeholder="John Doe"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                      />
+                      <input
+                        type="hidden"
+                        name="registration_type"
+                        value="Full Admission"
                       />
                     </div>
                   </div>
@@ -319,14 +310,14 @@ const AdmissionsPage: React.FC = () => {
                 <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">
                   Phone
                 </div>
-                <div className="text-lg font-black">+91 91401 10443</div>
+                <div className="text-lg font-black">+91 95995 71599</div>
               </div>
-              <div className="gloss-card p-8 rounded-2xl border-white/5">
+              <div className="gloss-card p-8 rounded-2xl border-white/5 gloss-card w-fit min-w-[200px]">
                 <Mail className="text-[#FFD700] mb-4" size={24} />
                 <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">
                   Email
                 </div>
-                <div className="text-sm font-black break-all">
+                <div className="text-[16px] font-black text-white whitespace-nowrap tracking-tighter leading-tight">
                   admission@dramantramacademy.com
                 </div>
               </div>

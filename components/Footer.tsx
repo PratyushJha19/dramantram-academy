@@ -204,12 +204,12 @@ const Footer: React.FC = () => {
                 +91 95995 71599
               </div>
             </div>
-            <div className="gloss-card p-8 rounded-3xl border-red-500/10 hover:border-red-500/40">
+            <div className="gloss-card p-6 rounded-3xl border-red-500/10 hover:border-red-500/40 w-fit min-w-[200px]">
               <Mail className="text-red-500 mb-4" size={24} />
               <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-2">
                 Admissions
               </div>
-              <div className="text-xs font-black text-white break-all">
+              <div className="text-[16px] font-black text-white whitespace-nowrap tracking-tighter leading-tight">
                 admission@dramantramacademy.com
               </div>
             </div>

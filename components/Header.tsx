@@ -83,7 +83,7 @@ const Header: React.FC = () => {
           </Link>
 
           <a
-            href="https://chat.whatsapp.com/GT8IRbAU0H3GXw7syc9w6n"
+            href="https://wa.me/919599571599"
             target="_blank"
             rel="noreferrer"
             className="px-2.5 py-1.5 sm:px-4 sm:py-2 md:px-6 md:py-2.5 bg-[#FF0000] text-white text-[8px] sm:text-[9px] md:text-[11px] font-bold uppercase tracking-wider sm:tracking-widest rounded-lg hover:bg-[#d00000] hover:shadow-[0_0_20px_rgba(255,0,0,0.6)] transition-all flex items-center shrink-0 whitespace-nowrap"
@@ -148,7 +148,7 @@ const Header: React.FC = () => {
 
             {/* Mobile WhatsApp Button */}
             <a
-              href="https://chat.whatsapp.com/GT8IRbAU0H3GXw7syc9w6n"
+              href="https://wa.me/919599571599"
               target="_blank"
               rel="noreferrer"
               className="mt-4 px-8 sm:px-10 py-3 sm:py-4 bg-[#FF0000] text-white oswald text-lg sm:text-xl font-black uppercase tracking-widest rounded-xl hover:bg-[#d00000] hover:shadow-[0_0_30px_rgba(255,0,0,0.6)] transition-all"

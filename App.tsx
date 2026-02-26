@@ -23,6 +23,7 @@ import UiUxCareer from "./pages/careers/UiUxCareer";
 import Brochure from "./components/Brochure";
 import ProjectDetails from "./pages/ProjectDetails";
 import NotFound from "./pages/NotFound";
+import EnquiryPage from "./pages/Enquiries";
 
 const App: React.FC = () => {
   return (
@@ -61,6 +62,7 @@ const App: React.FC = () => {
           <Route path="brochure" element={<Brochure />} />
           <Route path="portfolio/:projectId" element={<ProjectDetails />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/enquiry" element={<EnquiryPage />} />
         </Route>
       </Routes>
     </HashRouter>
