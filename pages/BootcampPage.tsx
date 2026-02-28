@@ -453,11 +453,11 @@ const BootcampPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-center mt-20 reveal">
+        {/* <div className="text-center mt-20 reveal">
           <button className="px-12 py-5 bg-[#FF0000] text-white font-black uppercase tracking-widest text-sm rounded-xl hover:shadow-[0_0_30px_rgba(255,0,0,0.5)] transition-all transform hover:scale-105">
             Grab Your Slot Now
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

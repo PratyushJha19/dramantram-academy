@@ -1,0 +1,22 @@
+[
+  {
+    "id": "3d-artistry",
+    "number": "01",
+    "title": "3D Artistry & Rendering",
+    "video": "/grow.mp4",
+    "description": "An exploration of procedural growth and high-fidelity texture rendering.",
+    "tools": ["Blender", "Octane Render", "After Effects"],
+    "challenge": "Simulating organic growth patterns while maintaining photorealistic lighting.",
+    "outcome": "A 15-second cinematic loop used for high-end digital advertising."
+  },
+  {
+    "id": "nivea-vfx",
+    "number": "02",
+    "title": "Commercial Product Shoot",
+    "video": "/nivea_vfx.mp4",
+    "description": "High-speed commercial cinematography combined with advanced liquid VFX.",
+    "tools": ["DaVinci Resolve", "Cinema 4D", "Red Giant"],
+    "challenge": "Perfectly syncing the physical product rotation with digital particle effects.",
+    "outcome": "Commercial-ready spot demonstrating professional color grading and compositing."
+  }
+]

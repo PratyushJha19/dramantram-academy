@@ -2,6 +2,8 @@ import React from "react";
 import Portfolio from "../components/Portfolio";
 import FinalCTA from "../components/FinalCTA";
 import { Layers, Monitor, Scissors, Target } from "lucide-react";
+import assignmentsData from "../data/assignments.json";
+import { Link } from "react-router-dom";
 
 const PortfolioPage: React.FC = () => {
   return (
@@ -67,62 +69,39 @@ const PortfolioPage: React.FC = () => {
 
       {/* Video Assignments Section */}
       <section className="py-32 relative reveal">
-        <div className="absolute inset-0 bg-red-glow opacity-30"></div>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="oswald text-4xl md:text-6xl font-black uppercase">
-              Practical <span className="text-gradient-red">Assignments.</span>
+            <h2 className="oswald text-4xl md:text-6xl font-black uppercase text-white">
+              Practical <span className="text-red-600">Assignments.</span>
             </h2>
-            <p className="text-gray-400 mt-4 max-w-xl mx-auto">
-              See how our students tackle complex creative challenges through
-              hands-on learning.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Video Card 1 */}
-            <div className="relative group overflow-hidden rounded-3xl h-80">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+            {assignmentsData.map((item) => (
+              <Link
+                to={`/assignment/${item.id}`}
+                key={item.id}
+                className="relative group overflow-hidden rounded-3xl h-80 block border border-white/5"
               >
-                <source src="/grow.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end pointer-events-none">
-                <span className="text-[#FFD700] text-xs font-black uppercase tracking-widest mb-2">
-                  Assignment #01
-                </span>
-                <h4 className="oswald text-2xl font-black uppercase text-white">
-                  3D Artistry & Rendering
-                </h4>
-              </div>
-            </div>
-
-            {/* Video Card 2 */}
-            <div className="relative group overflow-hidden rounded-3xl h-80">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              >
-                <source src="/nivea_vfx.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end pointer-events-none">
-                <span className="text-[#FFD700] text-xs font-black uppercase tracking-widest mb-2">
-                  Assignment #02
-                </span>
-                <h4 className="oswald text-2xl font-black uppercase text-white">
-                  Commercial Product Shoot
-                </h4>
-              </div>
-            </div>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                >
+                  <source src={item.video} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-10 flex flex-col justify-end">
+                  <span className="text-[#FFD700] text-xs font-black uppercase tracking-widest mb-2">
+                    Assignment #{item.number}
+                  </span>
+                  <h4 className="oswald text-2xl font-black uppercase text-white">
+                    {item.title}
+                  </h4>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
