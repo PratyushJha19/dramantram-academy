@@ -7,17 +7,19 @@ import {
   ArrowRight,
   MonitorPlay,
   Briefcase,
+  Tag,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const COURSES = [
   {
     id: "1",
-    slug: "visual-communication",
-    careerPath: "/careers/graphic-design",
+    slug: "ai-marketing-automation",
+    careerPath: "/careers/ai-marketing-automation",
     category: "DESIGN",
-    title: "Visual Communication",
+    title: "AI Marketing & Automation",
     duration: "3-4 Months",
+    price: "29,000",
     desc: "Learn how visual ideas are planned and designed — from branding basics to real design projects.",
     features: [
       "Graphic design fundamentals",
@@ -34,6 +36,7 @@ const COURSES = [
     category: "PRODUCT",
     title: "UI/UX Design",
     duration: "3-4 Months",
+    price: "29,000",
     desc: "Understand how digital products are designed — from user thinking to interface design with Figma.",
     features: [
       "UI basics using Figma",
@@ -50,6 +53,7 @@ const COURSES = [
     category: "MOTION",
     title: "Animation & VFX",
     duration: "3-4 Months",
+    price: "29,000",
     desc: "Learn how motion brings visuals to life — through animation, video editing, and VFX basics.",
     features: [
       "Motion graphics",
@@ -66,6 +70,7 @@ const COURSES = [
     category: "PRODUCTION",
     title: "Video Editing",
     duration: "3-4 Months",
+    price: "29,000",
     desc: "Master the art of storytelling through edits. Learn cutting for social media, ads, and films.",
     features: [
       "Editing Fundamentals",
@@ -117,10 +122,23 @@ const Courses: React.FC = () => {
                 </div>
               </div>
 
-              <h3 className="oswald text-2xl font-black uppercase mb-4 leading-tight group-hover:text-[#FF0000] transition-colors">
+              <h3 className="oswald text-2xl font-black uppercase mb-2 leading-tight group-hover:text-[#FF0000] transition-colors">
                 {course.title}
               </h3>
-              <p className="text-gray-400 text-sm mb-8 leading-relaxed font-medium min-h-[60px]">
+
+              {/* Added Pricing Section */}
+              <div className="flex flex-col mb-4">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-2xl font-black text-white">
+                    ₹{course.price}
+                  </span>
+                  <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                    Incl. GST
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed font-medium min-h-[60px]">
                 {course.desc}
               </p>
 

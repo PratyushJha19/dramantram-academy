@@ -1,5 +1,12 @@
 import React from "react";
-import { Video, CheckCircle2, ArrowLeft, Briefcase, Zap } from "lucide-react";
+import {
+  Video,
+  CheckCircle2,
+  ArrowLeft,
+  Briefcase,
+  Zap,
+  IndianRupee,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import FinalCTA from "../../components/FinalCTA";
 
@@ -16,11 +23,21 @@ const AnimationVfxPage: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
           <div className="animate-fade-in-up animation-delay-200">
-            <div className="inline-block px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full mb-6">
-              <span className="text-[10px] font-black text-[#FFD700] uppercase tracking-widest">
-                3-4 Months Intensive
-              </span>
+            <div className="flex flex-wrap gap-3 mb-6">
+              {/* Duration Tag */}
+              <div className="inline-block px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full">
+                <span className="text-[10px] font-black text-[#FFD700] uppercase tracking-widest">
+                  3-4 Months Intensive
+                </span>
+              </div>
+              {/* Pricing Tag */}
+              <div className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-full">
+                <span className="text-[10px] font-black text-white uppercase tracking-widest">
+                  Investment: ₹29,000 (Incl. GST)
+                </span>
+              </div>
             </div>
+
             <h1 className="oswald text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
               Animation <br />
               <span className="text-gradient-red">& VFX.</span>
@@ -60,15 +77,12 @@ const AnimationVfxPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-32 reveal">
-          <div className="bg-white/5 p-12 rounded-3xl border border-white/5 group hover:border-red-500/30 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6">
+        <div className="grid md:grid-cols-3 gap-8 mb-32 reveal">
+          {/* The Workflow */}
+          <div className="bg-white/5 p-10 rounded-3xl border border-white/5 group hover:border-red-500/30 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6">
               The Workflow
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Enter the world of motion. You'll master the software and
-              cinematic logic used by top production houses.
-            </p>
             <ul className="space-y-4">
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
                 <Video size={16} className="text-red-500" /> After Effects
@@ -82,20 +96,41 @@ const AnimationVfxPage: React.FC = () => {
               </li>
             </ul>
           </div>
-          <div className="bg-red-500/5 p-12 rounded-3xl border border-red-500/10 group hover:border-[#FFD700]/50 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6 text-[#FFD700]">
+
+          {/* Pricing Card */}
+          <div className="bg-[#FFD700]/10 p-10 rounded-3xl border border-[#FFD700]/20 group hover:border-[#FFD700]/50 transition-all flex flex-col justify-center text-center">
+            <div className="text-[10px] font-black text-[#FFD700] uppercase tracking-widest mb-2">
+              Total Fee
+            </div>
+            <div className="oswald text-5xl font-black text-white mb-2">
+              ₹29,000
+            </div>
+            <div className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+              Full Program (Incl. GST)
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest opacity-80">
+              <IndianRupee size={12} className="text-[#FFD700]" /> Career
+              Support Included
+            </div>
+          </div>
+
+          {/* Career Paths */}
+          <div className="bg-red-500/5 p-10 rounded-3xl border border-red-500/10 group hover:border-[#FFD700]/50 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6 text-[#FFD700]">
               Career Paths
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Join animation studios or production houses as a professional
-              motion designer or junior VFX artist.
-            </p>
-            <div className="p-6 bg-black rounded-2xl border border-white/5 text-center group-hover:scale-105 transition-transform">
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest mb-2">
-                Target Roles
+            <div className="grid grid-cols-1 gap-4">
+              <div className="p-4 bg-black rounded-xl border border-white/5 flex items-center gap-4 group-hover:scale-105 transition-transform">
+                <Briefcase size={16} className="text-red-500" />
+                <div className="text-sm font-bold uppercase tracking-tighter">
+                  Motion Designer
+                </div>
               </div>
-              <div className="text-lg font-bold text-white">
-                Motion Designer, VFX Artist, Game Artist
+              <div className="p-4 bg-black rounded-xl border border-white/5 flex items-center gap-4 group-hover:scale-105 transition-transform">
+                <Zap size={16} className="text-[#FFD700]" />
+                <div className="text-sm font-bold uppercase tracking-tighter">
+                  VFX Artist
+                </div>
               </div>
             </div>
           </div>

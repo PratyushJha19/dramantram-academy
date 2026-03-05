@@ -6,6 +6,7 @@ import {
   Zap,
   Youtube,
   Tv,
+  IndianRupee,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import FinalCTA from "../../components/FinalCTA";
@@ -23,11 +24,21 @@ const VideoEditingPage: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
           <div className="animate-fade-in-up animation-delay-200">
-            <div className="inline-block px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full mb-6">
-              <span className="text-[10px] font-black text-[#FF0000] uppercase tracking-widest">
-                3-4 Months Intensive
-              </span>
+            <div className="flex flex-wrap gap-3 mb-6">
+              {/* Duration Tag */}
+              <div className="inline-block px-4 py-1.5 bg-red-500/10 border border-red-500/30 rounded-full">
+                <span className="text-[10px] font-black text-[#FF0000] uppercase tracking-widest">
+                  3-4 Months Intensive
+                </span>
+              </div>
+              {/* Pricing Tag */}
+              <div className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-full">
+                <span className="text-[10px] font-black text-white uppercase tracking-widest">
+                  Investment: ₹29,000 (Incl. GST)
+                </span>
+              </div>
             </div>
+
             <h1 className="oswald text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
               Video <br />
               <span className="text-gradient-red">Editing.</span>
@@ -67,47 +78,61 @@ const VideoEditingPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-32 reveal">
-          <div className="bg-white/5 p-12 rounded-3xl border border-white/5 group hover:border-[#FF0000]/30 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6">
+        <div className="grid md:grid-cols-3 gap-8 mb-32 reveal">
+          {/* Course Focus */}
+          <div className="bg-white/5 p-10 rounded-3xl border border-white/5 group hover:border-[#FF0000]/30 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6">
               Course Focus
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Master the technical and creative aspects of modern
-              post-production. You'll work on live-style projects from day one.
-            </p>
             <ul className="space-y-4">
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
                 <MonitorPlay size={16} className="text-[#FF0000]" /> Narrative
                 Pacing
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <Zap size={16} className="text-[#FFD700]" /> Sound Design &
-                Color Grading
+                <Zap size={16} className="text-[#FFD700]" /> Sound & Color
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <Youtube size={16} className="text-[#FF0000]" /> YouTube &
-                Digital Content
+                <Youtube size={16} className="text-[#FF0000]" /> Social Content
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <Tv size={16} className="text-[#FF0000]" /> OTT & Film Standards
+                <Tv size={16} className="text-[#FF0000]" /> OTT Standards
               </li>
             </ul>
           </div>
-          <div className="bg-red-500/5 p-12 rounded-3xl border border-red-500/10 group hover:border-red-500/50 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6 text-[#FF0000]">
+
+          {/* Pricing Card */}
+          <div className="bg-red-500/10 p-10 rounded-3xl border border-red-500/20 group hover:border-red-500/50 transition-all flex flex-col justify-center text-center">
+            <div className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-2">
+              Program Fee
+            </div>
+            <div className="oswald text-5xl font-black text-white mb-2">
+              ₹29,000
+            </div>
+            <div className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+              One-time Payment (Incl. GST)
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest">
+              <IndianRupee size={12} className="text-red-500" /> Commercial
+              License Tips
+            </div>
+          </div>
+
+          {/* Career Paths */}
+          <div className="bg-red-500/5 p-10 rounded-3xl border border-red-500/10 group hover:border-red-500/50 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6 text-[#FF0000]">
               Career Paths
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Edit for the biggest names. Our alumni work in top agencies,
-              production houses, and as high-paid freelance creators.
+            <p className="text-gray-400 text-xs mb-8 leading-relaxed">
+              Edit for the biggest names. Our alumni work in top agencies and
+              production houses.
             </p>
-            <div className="p-6 bg-black rounded-2xl border border-white/5 text-center group-hover:scale-105 transition-transform">
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest mb-2">
+            <div className="p-5 bg-black rounded-2xl border border-white/5 text-center group-hover:scale-105 transition-transform">
+              <div className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-2">
                 Job Roles
               </div>
-              <div className="text-lg font-bold text-white">
-                Film Editor, Ad Editor, YouTube Post-Producer
+              <div className="text-sm font-bold text-white uppercase tracking-tight">
+                Film Editor, Post-Producer
               </div>
             </div>
           </div>

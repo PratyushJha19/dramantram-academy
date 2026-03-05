@@ -1,5 +1,11 @@
 import React from "react";
-import { Figma, CheckCircle2, ArrowLeft, MousePointer2 } from "lucide-react";
+import {
+  Figma,
+  CheckCircle2,
+  ArrowLeft,
+  MousePointer2,
+  IndianRupee,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import FinalCTA from "../../components/FinalCTA";
 
@@ -26,11 +32,21 @@ const UiUxPage: React.FC = () => {
           </div>
 
           <div className="order-1 lg:order-2 animate-fade-in-up animation-delay-200">
-            <div className="inline-block px-4 py-1.5 bg-[#FF0000]/10 border border-[#FF0000]/30 rounded-full mb-6">
-              <span className="text-[10px] font-black text-[#FF0000] uppercase tracking-widest">
-                3-4 Months Intensive
-              </span>
+            <div className="flex flex-wrap gap-3 mb-6">
+              {/* Duration Tag */}
+              <div className="inline-block px-4 py-1.5 bg-[#FF0000]/10 border border-[#FF0000]/30 rounded-full">
+                <span className="text-[10px] font-black text-[#FF0000] uppercase tracking-widest">
+                  3-4 Months Intensive
+                </span>
+              </div>
+              {/* Added Pricing Tag */}
+              <div className="inline-block px-4 py-1.5 bg-white/10 border border-white/20 rounded-full">
+                <span className="text-[10px] font-black text-white uppercase tracking-widest">
+                  Investment: ₹29,000 (Incl. GST)
+                </span>
+              </div>
             </div>
+
             <h1 className="oswald text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8">
               UI/UX <br />
               <span className="text-[#FF0000]">Design.</span>
@@ -61,48 +77,63 @@ const UiUxPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-32 reveal">
-          <div className="bg-white/5 p-12 rounded-3xl border border-white/5 group hover:border-[#FF0000]/30 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6">
+        <div className="grid md:grid-cols-3 gap-8 mb-32 reveal">
+          {/* Core Modules */}
+          <div className="bg-white/5 p-10 rounded-3xl border border-white/5 group hover:border-[#FF0000]/30 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6">
               Core Modules
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Master the tools and psychological principles that drive modern
-              app and web experiences.
-            </p>
             <ul className="space-y-4">
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
                 <Figma size={16} className="text-[#FF0000]" /> High-Fidelity
-                Design in Figma
+                Design
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <MousePointer2 size={16} className="text-[#FF0000]" /> User
-                Journey Mapping
+                <MousePointer2 size={16} className="text-[#FF0000]" /> Journey
+                Mapping
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <Figma size={16} className="text-[#FF0000]" /> Design Systems &
-                Components
+                <Figma size={16} className="text-[#FF0000]" /> Design Systems
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
                 <MousePointer2 size={16} className="text-[#FF0000]" />{" "}
-                Interactive Prototyping
+                Prototyping
               </li>
             </ul>
           </div>
-          <div className="bg-[#FF0000]/5 p-12 rounded-3xl border border-[#FF0000]/10 group hover:border-[#FF0000]/50 transition-all">
-            <h3 className="oswald text-3xl font-bold uppercase mb-6 text-[#FF0000]">
+
+          {/* Added Pricing Card */}
+          <div className="bg-[#FF0000]/10 p-10 rounded-3xl border border-[#FF0000]/20 group hover:border-[#FF0000]/50 transition-all flex flex-col justify-center text-center">
+            <div className="text-[10px] font-black text-[#FF0000] uppercase tracking-widest mb-2">
+              Total Program Fee
+            </div>
+            <div className="oswald text-5xl font-black text-white mb-2">
+              ₹29,000
+            </div>
+            <div className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+              Full Access (Incl. 18% GST)
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-2 text-[10px] font-bold text-white uppercase tracking-widest opacity-80">
+              <IndianRupee size={12} className="text-[#FF0000]" /> Certification
+              Included
+            </div>
+          </div>
+
+          {/* The Outcome */}
+          <div className="bg-[#FF0000]/5 p-10 rounded-3xl border border-[#FF0000]/10 group hover:border-[#FF0000]/50 transition-all">
+            <h3 className="oswald text-2xl font-bold uppercase mb-6 text-[#FF0000]">
               The Outcome
             </h3>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Launch your career in tech with a portfolio of case studies that
-              prove you understand user needs and aesthetic precision.
+            <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+              Launch your career in tech with a portfolio that proves you
+              understand user needs and aesthetic precision.
             </p>
-            <div className="p-6 bg-black rounded-2xl border border-white/5 text-center group-hover:scale-105 transition-transform">
-              <div className="text-xs font-black text-gray-500 uppercase tracking-widest mb-2">
+            <div className="p-5 bg-black rounded-2xl border border-white/5 text-center group-hover:scale-105 transition-transform">
+              <div className="text-[9px] font-black text-gray-500 uppercase tracking-widest mb-2">
                 Target Roles
               </div>
-              <div className="text-lg font-bold text-white">
-                Product Designer, UI/UX Designer, UX Researcher
+              <div className="text-sm font-bold text-white uppercase tracking-tight">
+                Product Designer, UI/UX Designer
               </div>
             </div>
           </div>

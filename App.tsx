@@ -38,14 +38,14 @@ const App: React.FC = () => {
           <Route path="portfolio" element={<PortfolioPage />} />
           <Route path="programs" element={<CoursesPage />} />
           <Route
-            path="programs/visual-communication"
+            path="programs/ai-marketing-automation"
             element={<VisualCommunicationPage />}
           />
           <Route path="programs/ui-ux-design" element={<UiUxPage />} />
           <Route path="programs/animation-vfx" element={<AnimationVfxPage />} />
           <Route path="programs/video-editing" element={<VideoEditingPage />} />
           <Route
-            path="careers/graphic-design"
+            path="careers/ai-marketing-automation"
             element={<GraphicDesignCareer />}
           />
           <Route path="careers/animation" element={<AnimationCareer />} />

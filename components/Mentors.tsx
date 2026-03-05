@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules"; // Added Navigation
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/css/navigation"; // Added Navigation styles
+import "swiper/css/navigation";
 
 const MENTORS = [
   {
@@ -22,7 +22,7 @@ const MENTORS = [
     bio: "Creative strategist leading visual direction, brand storytelling, and high-impact creative execution across projects.",
     img: "/rupam.jpeg",
     linkedin: "https://www.linkedin.com/in/rupam-biswas-75187952/",
-    insta: "#",
+    insta: "https://www.instagram.com/biswashinahihota/?hl=en",
   },
   {
     name: "MOHAMMAD SHADAB",
@@ -30,7 +30,7 @@ const MENTORS = [
     bio: "Specialist in 2D and 3D animation, guiding students through motion design, character animation, and industry-level production workflows.",
     img: "shadab.jpeg",
     linkedin: "https://www.linkedin.com/in/mohammad-shadab-258b84ba/",
-    insta: "#",
+    insta: "https://www.instagram.com/pixa.move/?hl=en",
   },
   {
     name: "Lalan Kumar",
@@ -38,7 +38,7 @@ const MENTORS = [
     bio: "Leads animation training with a focus on storytelling, technical precision, and studio-ready production skills.",
     img: "/lalan.jpeg",
     linkedin: "https://www.linkedin.com/in/lkshashi/",
-    insta: "#",
+    insta: "https://www.instagram.com/lkshashi.dramantram/?hl=en",
   },
   {
     name: "ANKIT RAJ",
@@ -46,7 +46,7 @@ const MENTORS = [
     bio: "Specializing in digital growth, brand positioning, and performance-driven marketing strategies across online platforms.",
     img: "/ankit.jpeg",
     linkedin: "https://www.linkedin.com/in/ankitraj18/",
-    insta: "#",
+    // No insta property here
   },
   {
     name: "KUNDAN KUMAR",
@@ -54,7 +54,7 @@ const MENTORS = [
     bio: "Helping brands find clarity, positioning, and strong visual direction through strategic thinking and market insight.",
     img: "/kundan.jpeg",
     linkedin: "https://www.linkedin.com/in/unbinarykundan/",
-    insta: "#",
+    insta: "https://www.instagram.com/unbinarykundan/?hl=en",
   },
   {
     name: "HARSH BANSAL",
@@ -62,7 +62,7 @@ const MENTORS = [
     bio: "Leads visual media production with expertise in professional video editing, storytelling, and industry-level post-production workflows.",
     img: "/harsh.jpeg",
     linkedin: "https://www.linkedin.com/in/harshdramantram/",
-    insta: "#",
+    insta: "https://www.instagram.com/harry.hn2/?hl=en",
   },
   {
     name: "BHAVESH BHATIA",
@@ -70,7 +70,7 @@ const MENTORS = [
     bio: "Specializing in visual identity, layout design, and brand-focused creative execution across digital and print media.",
     img: "/bhavesh.jpeg",
     linkedin: "https://www.linkedin.com/in/bhavesh-bhatia-8075bb200/",
-    insta: "#",
+    insta: "https://www.instagram.com/bhaveshbhatia99/?hl=en",
   },
   {
     name: "TANISHTHA KATTA",
@@ -78,7 +78,7 @@ const MENTORS = [
     bio: "Blending graphic design and animation to create visually engaging, story-driven creative work across digital platforms.",
     img: "tanishtha.jpeg",
     linkedin: "https://www.linkedin.com/in/tanishtha-katta-3a8b6b1a5/",
-    insta: "#",
+    insta: "https://www.instagram.com/tanishthakatta/?hl=en",
   },
   {
     name: "ABDUL RAHMAN",
@@ -86,7 +86,7 @@ const MENTORS = [
     bio: "Specializing in cinematic storytelling, seamless editing, and industry-standard post-production techniques.",
     img: "/abdul.jpeg",
     linkedin: "https://www.linkedin.com/in/abdul-rahaman-854113216/",
-    insta: "#",
+    insta: "https://www.instagram.com/abdulrahaman7477/?hl=en",
   },
 ];
 
@@ -110,9 +110,7 @@ const Mentors: React.FC = () => {
           </p>
         </div>
 
-        {/* Increased horizontal padding (px-16) to create space for buttons */}
         <div className="relative px-4 md:px-16">
-          {/* Custom Navigation Buttons - adjusted 'left' and 'right' values */}
           <button className="prev-btn absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full border border-red-500/20 bg-black/50 text-white hover:bg-red-600 transition-all group shadow-xl">
             <ChevronLeft size={24} />
           </button>
@@ -124,7 +122,6 @@ const Mentors: React.FC = () => {
             modules={[Autoplay, Pagination, Navigation]}
             spaceBetween={30}
             slidesPerView={1}
-            autoHeight={false} // Ensure slides don't jump in height
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             pagination={{ clickable: true, dynamicBullets: true }}
             navigation={{
@@ -136,12 +133,10 @@ const Mentors: React.FC = () => {
               1024: { slidesPerView: 3 },
               1280: { slidesPerView: 4 },
             }}
-            // Standardizing slide heights
             className="mentor-swiper !pb-20 !static"
           >
             {MENTORS.map((m, i) => (
               <SwiperSlide key={i} className="!h-auto">
-                {/* h-full ensures the card fills the SwiperSlide height */}
                 <div className="gloss-card p-8 md:p-10 rounded-[2.5rem] group relative border border-red-500/10 hover:border-red-500/50 transition-all duration-500 h-full flex flex-col">
                   <div className="relative mb-10 mx-auto w-40 h-40">
                     <div className="absolute -inset-4 rounded-full border border-red-500/10 group-hover:border-red-500/40 group-hover:scale-105 transition-all duration-700"></div>
@@ -158,28 +153,38 @@ const Mentors: React.FC = () => {
                   <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#FFD700] mb-6 min-h-[30px]">
                     {m.role}
                   </div>
-                  {/* flex-grow pushes the footer icons to the bottom regardless of bio length */}
                   <p className="text-gray-500 text-sm font-medium leading-relaxed mb-10 flex-grow">
                     {m.bio}
                   </p>
 
                   <div className="flex justify-center gap-6 pt-6 border-t border-white/5 mt-auto">
-                    <a
-                      href={m.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Linkedin
-                        size={18}
-                        className="text-gray-600 hover:text-red-500 cursor-pointer transition-colors"
-                      />
-                    </a>
-                    <a href={m.insta}>
-                      <InstagramIcon
-                        size={18}
-                        className="text-gray-600 hover:text-red-500 cursor-pointer transition-colors"
-                      />
-                    </a>
+                    {m.linkedin && (
+                      <a
+                        href={m.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin
+                          size={18}
+                          className="text-gray-600 hover:text-red-500 cursor-pointer transition-colors"
+                        />
+                      </a>
+                    )}
+                    {/* Conditionally rendering the Instagram Icon */}
+                    {m.insta && (
+                      <a
+                        href={m.insta}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                      >
+                        <InstagramIcon
+                          size={18}
+                          className="text-gray-600 hover:text-red-500 cursor-pointer transition-colors"
+                        />
+                      </a>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>
@@ -196,7 +201,6 @@ const Mentors: React.FC = () => {
       </div>
 
       <style jsx global>{`
-        /* Force all slides to be the same height as the tallest slide */
         .mentor-swiper .swiper-wrapper {
           display: flex;
         }
@@ -210,7 +214,7 @@ const Mentors: React.FC = () => {
         @media (max-width: 768px) {
           .prev-btn,
           .next-btn {
-            display: none; /* Hide chevrons on mobile for better touch experience */
+            display: none;
           }
         }
       `}</style>
