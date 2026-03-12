@@ -10,12 +10,20 @@ import {
   Loader2,
   CheckCircle2,
 } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Hero: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  const onCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+  };
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -26,6 +34,10 @@ const Hero: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!captchaToken) {
+      alert("Please verify that you are a human!");
+      return;
+    }
     setStatus("sending");
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -42,6 +54,9 @@ const Hero: React.FC = () => {
       );
 
       setStatus("success");
+      setCaptchaToken(null); // Reset captcha on success
+      recaptchaRef.current?.reset();
+      formRef.current?.reset();
 
       // Trigger the actual download
       const link = document.createElement("a");
@@ -178,6 +193,9 @@ const Hero: React.FC = () => {
                         name="user_email"
                         required
                         type="email"
+                        // Regex for standard email validation
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        title="Please enter a valid email address (e.g., name@email.com)"
                         placeholder="Email Address"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
@@ -191,9 +209,22 @@ const Hero: React.FC = () => {
                         name="user_phone"
                         required
                         type="tel"
-                        placeholder="Phone Number"
+                        // Validates 10 digits starting with 6, 7, 8, or 9
+                        pattern="^[6-9]\d{9}$"
+                        title="Please enter a valid 10-digit Indian phone number"
+                        placeholder="Phone Number (10 Digits)"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
+                    </div>
+                    <div className="relative">
+                      <div className="flex justify-center mb-6">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW" // Put your actual Site Key here
+                          onChange={onCaptchaChange}
+                          theme="dark" // Matches your black/red aesthetic
+                        />
+                      </div>
                     </div>
                   </div>
 

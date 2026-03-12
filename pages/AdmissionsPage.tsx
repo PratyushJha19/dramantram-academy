@@ -15,6 +15,7 @@ import {
   Loader2,
   CheckCircle,
 } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const AdmissionsPage: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -22,6 +23,13 @@ const AdmissionsPage: React.FC = () => {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  const onCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+  };
 
   const courses = [
     { id: "visual", label: "Visual Communication", icon: "🎨" },
@@ -38,6 +46,10 @@ const AdmissionsPage: React.FC = () => {
       return;
     }
     setStatus("sending");
+    if (!captchaToken) {
+      alert("Please verify that you are a human!");
+      return;
+    }
 
     try {
       await emailjs.sendForm(
@@ -47,6 +59,8 @@ const AdmissionsPage: React.FC = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
       setStatus("success");
+      setCaptchaToken(null); // Reset captcha on success
+      recaptchaRef.current?.reset();
       formRef.current?.reset();
       setSelectedCourse("");
     } catch (error) {
@@ -142,8 +156,11 @@ const AdmissionsPage: React.FC = () => {
                         name="user_email"
                         required
                         type="email"
-                        placeholder="john@example.com"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                        // Regex for standard email validation
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        title="Please enter a valid email address (e.g., name@email.com)"
+                        placeholder="Email Address"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
                   </div>
@@ -161,8 +178,11 @@ const AdmissionsPage: React.FC = () => {
                         name="user_phone"
                         required
                         type="tel"
-                        placeholder="+91 00000 00000"
-                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                        // Validates 10 digits starting with 6, 7, 8, or 9
+                        pattern="^[6-9]\d{9}$"
+                        title="Please enter a valid 10-digit Indian phone number"
+                        placeholder="Phone Number (10 Digits)"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
                   </div>
@@ -197,6 +217,17 @@ const AdmissionsPage: React.FC = () => {
                         </span>
                       </button>
                     ))}
+                  </div>
+                </div>
+
+                <div className="space-y-2 md:col-span-2">
+                  <div className="flex justify-center mb-6">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW" // Put your actual Site Key here
+                      onChange={onCaptchaChange}
+                      theme="dark" // Matches your black/red aesthetic
+                    />
                   </div>
                 </div>
 
@@ -310,7 +341,14 @@ const AdmissionsPage: React.FC = () => {
                 <div className="text-[10px] font-black text-gray-500 uppercase tracking-widest mb-1">
                   Phone
                 </div>
-                <div className="text-lg font-black">+91 95995 71599</div>
+                <div className="text-base font-black text-white">
+                  <a
+                    href="tel:+919599571599"
+                    className="hover:text-[#FFD700] transition-colors"
+                  >
+                    +91 95995 71599
+                  </a>
+                </div>
               </div>
               <div className="gloss-card p-8 rounded-2xl border-white/5 gloss-card w-fit min-w-[200px]">
                 <Mail className="text-[#FFD700] mb-4" size={24} />
@@ -318,7 +356,12 @@ const AdmissionsPage: React.FC = () => {
                   Email
                 </div>
                 <div className="text-[16px] font-black text-white whitespace-nowrap tracking-tighter leading-tight">
-                  admission@dramantramacademy.com
+                  <a
+                    href="mailto:admission@dramantramacademy.com"
+                    className="hover:text-[#FFD700] transition-colors"
+                  >
+                    admission@dramantramacademy.com
+                  </a>
                 </div>
               </div>
             </div>

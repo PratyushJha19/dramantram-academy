@@ -192,12 +192,12 @@ const Mentors: React.FC = () => {
           </Swiper>
         </div>
 
-        <div className="mt-12">
+        {/* <div className="mt-12">
           <button className="px-10 py-4 border border-red-500/20 text-[#FFD700] oswald font-bold uppercase tracking-[0.3em] text-[11px] rounded-xl hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all group">
             Meet the Whole Squad{" "}
             <ArrowUpRight className="inline-block ml-2 group-hover:translate-x-1 transition-transform" />
           </button>
-        </div>
+        </div> */}
       </div>
 
       <style jsx global>{`

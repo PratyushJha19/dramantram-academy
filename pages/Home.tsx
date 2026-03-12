@@ -25,9 +25,9 @@ const Home: React.FC = () => {
       </div>
 
       {/* Balanced gap between AI Oracle and Alumni Speak */}
-      <div className="pt-12 pb-8 md:pt-20 md:pb-12">
+      {/* <div className="pt-12 pb-8 md:pt-20 md:pb-12">
         <GeminiAdvisor />
-      </div>
+      </div> */}
       <div className="py-8 md:py-12">
         <AlumniSpeak />
       </div>

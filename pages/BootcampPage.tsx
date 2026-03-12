@@ -17,6 +17,7 @@ import {
   CheckCircle,
   ChevronRight,
 } from "lucide-react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const BootcampPage: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -29,6 +30,13 @@ const BootcampPage: React.FC = () => {
     minutes: 4,
     seconds: 59,
   });
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+
+  const onCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,6 +65,11 @@ const BootcampPage: React.FC = () => {
     e.preventDefault();
     setStatus("sending");
 
+    if (!captchaToken) {
+      alert("Please verify that you are a human!");
+      return;
+    }
+
     try {
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -65,6 +78,9 @@ const BootcampPage: React.FC = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
       setStatus("success");
+      setCaptchaToken(null); // Reset captcha on success
+      recaptchaRef.current?.reset();
+
       formRef.current?.reset();
     } catch (error) {
       setStatus("error");
@@ -186,8 +202,11 @@ const BootcampPage: React.FC = () => {
                           name="user_email"
                           required
                           type="email"
-                          placeholder="john@example.com"
-                          className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                          // Regex for standard email validation
+                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                          title="Please enter a valid email address (e.g., name@email.com)"
+                          placeholder="Email Address"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                         />
                       </div>
                     </div>
@@ -205,8 +224,22 @@ const BootcampPage: React.FC = () => {
                           name="user_phone"
                           required
                           type="tel"
-                          placeholder="+91 00000 00000"
-                          className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] focus:outline-none transition-all"
+                          // Validates 10 digits starting with 6, 7, 8, or 9
+                          pattern="^[6-9]\d{9}$"
+                          title="Please enter a valid 10-digit Indian phone number"
+                          placeholder="Phone Number (10 Digits)"
+                          className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <div className="flex justify-center mb-6">
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW" // Put your actual Site Key here
+                          onChange={onCaptchaChange}
+                          theme="dark" // Matches your black/red aesthetic
                         />
                       </div>
                     </div>

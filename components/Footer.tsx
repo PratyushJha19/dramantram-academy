@@ -201,7 +201,12 @@ const Footer: React.FC = () => {
                 Inquiry
               </div>
               <div className="text-base font-black text-white">
-                +91 95995 71599
+                <a
+                  href="tel:+919599571599"
+                  className="hover:text-[#FFD700] transition-colors"
+                >
+                  +91 95995 71599
+                </a>
               </div>
             </div>
             <div className="gloss-card p-6 rounded-3xl border-red-500/10 hover:border-red-500/40 w-fit min-w-[200px]">
@@ -210,7 +215,12 @@ const Footer: React.FC = () => {
                 Admissions
               </div>
               <div className="text-[16px] font-black text-white whitespace-nowrap tracking-tighter leading-tight">
-                admission@dramantramacademy.com
+                <a
+                  href="mailto:admission@dramantramacademy.com"
+                  className="hover:text-[#FFD700] transition-colors"
+                >
+                  admission@dramantramacademy.com
+                </a>
               </div>
             </div>
           </div>
