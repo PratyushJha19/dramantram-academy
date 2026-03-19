@@ -26,9 +26,12 @@ const GraphicDesignCareer: React.FC = () => {
             <span className="text-[#FFD700]">Career Paths.</span>
           </h1>
           <p className="text-gray-400 max-w-3xl text-xl font-medium leading-relaxed animate-fade-in-up animation-delay-200">
-            From luxury branding to digital products, high-end graphic design is
-            at the core of every industry. We train you to be more than just a
-            software operator — we train you to be a visual strategist.
+            From AI-powered campaigns to automated growth systems, modern
+            marketing runs on intelligence and speed. We train you to be more
+            than just a tool user — we train you to be a growth architect. Learn
+            to create high-converting content, build smart funnels, and design
+            marketing systems that attract, engage, and scale results
+            automatically.
           </p>
         </div>
       </div>
@@ -40,75 +43,77 @@ const GraphicDesignCareer: React.FC = () => {
               <Briefcase size={32} />
             </div>
             <h3 className="oswald text-2xl font-bold uppercase mb-4">
-              Designer Roles
+              Growth Roles
             </h3>
             <ul className="space-y-4 text-gray-400 font-medium text-sm">
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-red-500" size={16} /> Brand
-                Identity Designer
+                <CheckCircle2 className="text-red-500" size={16} /> AI Marketing
+                Specialist
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-red-500" size={16} /> Advertising
-                Art Director
+                <CheckCircle2 className="text-red-500" size={16} /> Marketing
+                Automation Expert
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-red-500" size={16} /> Layout &
-                Print Specialist
+                <CheckCircle2 className="text-red-500" size={16} /> Performance
+                Marketer
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-red-500" size={16} /> Packaging
-                Designer
+                <CheckCircle2 className="text-red-500" size={16} /> Funnel &
+                Growth Strategist
               </li>
             </ul>
           </div>
+
           <div className="gloss-card p-10 rounded-3xl border-red-500/10">
             <div className="w-14 h-14 bg-[#FFD700]/10 rounded-2xl flex items-center justify-center text-[#FFD700] mb-8">
               <Globe size={32} />
             </div>
             <h3 className="oswald text-2xl font-bold uppercase mb-4">
-              Agencies & Brands
+              Industries & Teams
             </h3>
             <ul className="space-y-4 text-gray-400 font-medium text-sm">
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-[#FFD700]" size={16} /> Creative
-                Agencies
+                <CheckCircle2 className="text-[#FFD700]" size={16} /> Digital
+                Marketing Agencies
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-[#FFD700]" size={16} /> In-house
-                Brand Teams
+                <CheckCircle2 className="text-[#FFD700]" size={16} /> Startup
+                Growth Teams
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-[#FFD700]" size={16} /> Tech
-                Startup Labs
+                <CheckCircle2 className="text-[#FFD700]" size={16} /> SaaS &
+                Tech Companies
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-[#FFD700]" size={16} /> Fashion &
-                Retail Groups
+                <CheckCircle2 className="text-[#FFD700]" size={16} /> E-commerce
+                Brands
               </li>
             </ul>
           </div>
+
           <div className="gloss-card p-10 rounded-3xl border-red-500/10">
             <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white mb-8">
               <PenTool size={32} />
             </div>
             <h3 className="oswald text-2xl font-bold uppercase mb-4">
-              Freelance Pro
+              Freelance & Scale
             </h3>
             <ul className="space-y-4 text-gray-400 font-medium text-sm">
               <li className="flex items-center gap-2">
                 <CheckCircle2 className="text-white" size={16} /> Global Remote
-                Gigs
+                Clients
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-white" size={16} /> Direct Client
-                Strategy
+                <CheckCircle2 className="text-white" size={16} /> Automation
+                System Setup
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-white" size={16} /> Personal
-                Studio Setup
+                <CheckCircle2 className="text-white" size={16} /> Lead
+                Generation Funnels
               </li>
               <li className="flex items-center gap-2">
-                <CheckCircle2 className="text-white" size={16} /> High-Value
+                <CheckCircle2 className="text-white" size={16} /> High-Ticket
                 Consulting
               </li>
             </ul>

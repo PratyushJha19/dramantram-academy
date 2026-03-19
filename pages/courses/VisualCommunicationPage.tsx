@@ -43,18 +43,20 @@ const VisualCommunicationPage: React.FC = () => {
               <span className="text-gradient-red">& Automation.</span>
             </h1>
             <p className="text-gray-400 text-xl leading-relaxed mb-10 font-medium">
-              Learn how visual ideas are planned, designed, and communicated —
-              from branding basics to real design projects. This program focuses
-              on building strong fundamentals, practical thinking, and
-              portfolio-ready work.
+              Learn how modern businesses use AI and automation to grow faster,
+              generate leads, and scale marketing campaigns. This program
+              focuses on practical tools, real-world marketing strategies, and
+              automation systems that help brands save time while increasing
+              results. 
             </p>
 
             <div className="space-y-4 mb-12">
               {[
-                "Graphic design fundamentals",
-                "Branding & visual identity basics",
-                "Hands-on design projects",
-                "Portfolio development support",
+                "AI Tools for Marketing",
+                "Marketing Automation Systems",
+                "AI Content & Ad Creation",
+                "Lead Generation & Funnel Building",
+                "Real Campaign Projects",
               ].map((text, i) => (
                 <div
                   key={i}
@@ -86,15 +88,24 @@ const VisualCommunicationPage: React.FC = () => {
             </h3>
             <ul className="space-y-4">
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <PenTool size={16} className="text-red-500" /> Typography &
-                Branding
+                <PenTool size={16} className="text-red-500" />
+                AI Tools for Marketing 
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <PenTool size={16} className="text-red-500" /> Commercial Layout
+                <PenTool size={16} className="text-red-500" /> Marketing
+                Automation Systems
               </li>
               <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
-                <PenTool size={16} className="text-red-500" /> Social Media
-                Identity
+                <PenTool size={16} className="text-red-500" /> AI Content & Ad
+                Creation
+              </li>
+              <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
+                <PenTool size={16} className="text-red-500" /> Lead Generation &
+                Funnel Building
+              </li>
+              <li className="text-sm font-bold text-gray-300 flex items-center gap-3">
+                <PenTool size={16} className="text-red-500" /> Real Campaign
+                Projects
               </li>
             </ul>
           </div>
@@ -128,7 +139,9 @@ const VisualCommunicationPage: React.FC = () => {
                   <div className="text-[9px] font-black text-gray-500 uppercase">
                     Jobs
                   </div>
-                  <div className="text-sm font-bold">Brand Designer</div>
+                  <div className="text-sm font-bold">
+                    AI Content Strategist, AI Marketing Specialist
+                  </div>
                 </div>
               </div>
               <div className="p-4 bg-black rounded-xl border border-white/5 flex items-center gap-4">

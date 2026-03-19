@@ -32,7 +32,7 @@ const AdmissionsPage: React.FC = () => {
   };
 
   const courses = [
-    { id: "visual", label: "Visual Communication", icon: "🎨" },
+    { id: "visual", label: "AI Marketing & Automation", icon: "📈" },
     { id: "uiux", label: "UI/UX Design", icon: "📱" },
     { id: "vfx", label: "Animation & VFX", icon: "🎬" },
     { id: "editing", label: "Video Editing", icon: "✂️" },
