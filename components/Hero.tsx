@@ -6,7 +6,7 @@ import {
   User,
   Mail,
   Phone,
-  BookOpen, // New icon for the course field
+  BookOpen,
   X,
   Loader2,
   CheckCircle2,
@@ -198,14 +198,14 @@ const Hero: React.FC = () => {
                       />
                     </div>
 
-                    {/* NEW: Course Interest Field */}
+                    {/* Course Interest Dropdown mapped to {{selected_course}} */}
                     <div className="relative">
                       <BookOpen
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
                         size={18}
                       />
                       <select
-                        name="interest_course" // Use this tag in your EmailJS template as {{interest_course}}
+                        name="selected_course"
                         required
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none appearance-none text-gray-300"
                         defaultValue=""
@@ -213,16 +213,19 @@ const Hero: React.FC = () => {
                         <option value="" disabled className="bg-black">
                           Select Course of Interest
                         </option>
-                        <option value="Acting" className="bg-black">
+                        <option
+                          value="AI Marketing & Automation"
+                          className="bg-black"
+                        >
                           AI Marketing & Automation
                         </option>
-                        <option value="Direction" className="bg-black">
+                        <option value="UI/UX Design" className="bg-black">
                           UI/UX Design
                         </option>
-                        <option value="Cinematography" className="bg-black">
+                        <option value="Animation & VFX" className="bg-black">
                           Animation & VFX
                         </option>
-                        <option value="Editing" className="bg-black">
+                        <option value="Video Editing" className="bg-black">
                           Video Editing
                         </option>
                       </select>
