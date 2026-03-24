@@ -6,6 +6,7 @@ import {
   User,
   Mail,
   Phone,
+  BookOpen, // New icon for the course field
   X,
   Loader2,
   CheckCircle2,
@@ -45,7 +46,6 @@ const Hero: React.FC = () => {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     try {
-      // Send to EmailJS
       await emailjs.sendForm(
         serviceId,
         templateId,
@@ -57,8 +57,6 @@ const Hero: React.FC = () => {
       setCaptchaToken(null);
       recaptchaRef.current?.reset();
       formRef.current?.reset();
-
-      // REMOVED: The logic that created an <a> tag and triggered a download
     } catch (error) {
       console.error("EmailJS Error:", error);
       setStatus("error");
@@ -67,7 +65,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pt-24 md:pt-32 overflow-hidden bg-black text-white">
-      {/* Background Gradients */}
       <div className="absolute top-[-10%] right-[-10%] w-[70%] h-[70%] bg-[#FF0000]/25 blur-[140px] rounded-full z-0"></div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 w-full z-10 text-center">
@@ -150,17 +147,12 @@ const Hero: React.FC = () => {
                 <form
                   ref={formRef}
                   onSubmit={handleFormSubmit}
-                  className="space-y-6"
+                  className="space-y-4"
                 >
                   <input
                     type="hidden"
                     name="registration_type"
                     value="Brochure Request"
-                  />
-                  <input
-                    type="hidden"
-                    name="selected_course"
-                    value="Digital Brochure"
                   />
 
                   <div className="space-y-4">
@@ -177,6 +169,7 @@ const Hero: React.FC = () => {
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
+
                     <div className="relative">
                       <Mail
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
@@ -186,12 +179,11 @@ const Hero: React.FC = () => {
                         name="user_email"
                         required
                         type="email"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        title="Please enter a valid email address"
                         placeholder="Email Address"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
+
                     <div className="relative">
                       <Phone
                         className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
@@ -201,13 +193,42 @@ const Hero: React.FC = () => {
                         name="user_phone"
                         required
                         type="tel"
-                        pattern="^[6-9]\d{9}$"
-                        title="Please enter a valid 10-digit Indian phone number"
                         placeholder="Phone Number"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
-                    <div className="flex justify-center mb-6">
+
+                    {/* NEW: Course Interest Field */}
+                    <div className="relative">
+                      <BookOpen
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+                        size={18}
+                      />
+                      <select
+                        name="interest_course" // Use this tag in your EmailJS template as {{interest_course}}
+                        required
+                        className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none appearance-none text-gray-300"
+                        defaultValue=""
+                      >
+                        <option value="" disabled className="bg-black">
+                          Select Course of Interest
+                        </option>
+                        <option value="Acting" className="bg-black">
+                          AI Marketing & Automation
+                        </option>
+                        <option value="Direction" className="bg-black">
+                          UI/UX Design
+                        </option>
+                        <option value="Cinematography" className="bg-black">
+                          Animation & VFX
+                        </option>
+                        <option value="Editing" className="bg-black">
+                          Video Editing
+                        </option>
+                      </select>
+                    </div>
+
+                    <div className="flex justify-center py-2">
                       <ReCAPTCHA
                         ref={recaptchaRef}
                         sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW"
