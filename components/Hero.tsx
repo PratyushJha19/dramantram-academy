@@ -54,17 +54,11 @@ const Hero: React.FC = () => {
       );
 
       setStatus("success");
-      setCaptchaToken(null); // Reset captcha on success
+      setCaptchaToken(null);
       recaptchaRef.current?.reset();
       formRef.current?.reset();
 
-      // Trigger the actual download
-      const link = document.createElement("a");
-      link.href = "/dramantram_academy_brochure.pdf"; // Ensure this file is in your /public folder
-      link.download = "dramantram_academy_brochure.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // REMOVED: The logic that created an <a> tag and triggered a download
     } catch (error) {
       console.error("EmailJS Error:", error);
       setStatus("error");
@@ -127,30 +121,30 @@ const Hero: React.FC = () => {
             {status === "success" ? (
               <div className="text-center py-10 animate-in fade-in zoom-in duration-500">
                 <CheckCircle2
-                  className="text-green-500 mx-auto mb-6"
+                  className="text-[#FF0000] mx-auto mb-6"
                   size={80}
                 />
                 <h2 className="oswald text-3xl font-black uppercase mb-2">
-                  File <span className="text-green-500">Ready!</span>
+                  Request <span className="text-[#FF0000]">Received!</span>
                 </h2>
-                <p className="text-gray-400 mb-8">
-                  Your brochure is downloading. Please check your downloads
-                  folder.
+                <p className="text-gray-400 mb-8 max-w-[280px] mx-auto">
+                  Thank you! We have sent the 2026 studio guide to your email
+                  address. Please check your inbox (and spam folder) shortly.
                 </p>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="px-10 py-3 border border-white/20 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white/10"
+                  className="px-10 py-3 bg-[#FF0000] rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-red-700 transition-colors"
                 >
-                  Close
+                  Back to Studio
                 </button>
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="oswald text-3xl font-black uppercase mb-2">
-                  Download <span className="text-[#FF0000]">Brochure</span>
+                  Request <span className="text-[#FF0000]">Brochure</span>
                 </h2>
                 <p className="text-gray-500 mb-8 font-medium">
-                  Enter your details to receive the 2026 studio guide.
+                  Enter your details to receive the 2026 studio guide via email.
                 </p>
 
                 <form
@@ -158,7 +152,6 @@ const Hero: React.FC = () => {
                   onSubmit={handleFormSubmit}
                   className="space-y-6"
                 >
-                  {/* EmailJS Hidden Fields */}
                   <input
                     type="hidden"
                     name="registration_type"
@@ -193,9 +186,8 @@ const Hero: React.FC = () => {
                         name="user_email"
                         required
                         type="email"
-                        // Regex for standard email validation
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        title="Please enter a valid email address (e.g., name@email.com)"
+                        title="Please enter a valid email address"
                         placeholder="Email Address"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
@@ -209,22 +201,19 @@ const Hero: React.FC = () => {
                         name="user_phone"
                         required
                         type="tel"
-                        // Validates 10 digits starting with 6, 7, 8, or 9
                         pattern="^[6-9]\d{9}$"
                         title="Please enter a valid 10-digit Indian phone number"
-                        placeholder="Phone Number (10 Digits)"
+                        placeholder="Phone Number"
                         className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 focus:border-[#FF0000] outline-none"
                       />
                     </div>
-                    <div className="relative">
-                      <div className="flex justify-center mb-6">
-                        <ReCAPTCHA
-                          ref={recaptchaRef}
-                          sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW" // Put your actual Site Key here
-                          onChange={onCaptchaChange}
-                          theme="dark" // Matches your black/red aesthetic
-                        />
-                      </div>
+                    <div className="flex justify-center mb-6">
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey="6Le5HYgsAAAAAOnb6-8A_7CISxjGrj7l5WjTJawW"
+                        onChange={onCaptchaChange}
+                        theme="dark"
+                      />
                     </div>
                   </div>
 
@@ -236,7 +225,7 @@ const Hero: React.FC = () => {
                     {status === "sending" ? (
                       <Loader2 className="animate-spin" />
                     ) : (
-                      "Download Now"
+                      "Send Me The Brochure"
                     )}
                   </button>
                   {status === "error" && (
